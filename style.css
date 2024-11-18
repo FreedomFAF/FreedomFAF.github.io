@@ -1,11 +1,42 @@
-.header-options{
-    background-color: aqua;
+body{
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #ffffff;
 }
 
-body {
-    background-color: white;
+.nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#aaa;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
-header{
-    background-color: blue;
+.nav-item {
+    float: left;
+}
+
+.nav-item a{
+    display: block;
+    padding: 14px 16px;
+    font-weight: bold;
+    font-size: large;
+    color: white;
+    text-decoration: none;
+}
+
+.active {
+    background-color: rgb(26, 39, 158);
+}
+
+.nav-bar .nav-item :hover{
+    background-color: #666;
+}
+
+article{
+    margin-top: 50px;
+    text-align: center;
 }
