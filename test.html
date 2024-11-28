@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <title>James' website</title>
+        <title>James' Website</title>
         <meta charset="UTF-8">
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
         <!--critical css-->
@@ -11,20 +11,30 @@
         <script src="javascript/index.js"></script>
         <noscript>Sorry, your browser does not support JavaScript!</noscript>
     </head>
-
     <body>
         <header >
             <ul class="nav-bar">
                 <li class="nav-item active"><a class="nav-label" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-label" href="/blog">Blog</a></li>
-                <li class="nav-item"><a class="nav-label" href="/about-me">About Me</a></li>     
-                <li class="nav-item-right"><a class="nav-label" href="/game">Gamified</a></li>           
+                <li class="nav-item"><a class="nav-label" href="/about-me">About Me</a></li>
+                
+                <li class="nav-item">
+                    <span class="nav-label">dropdown</span>
+                    <div class="nav-dropdown-content">
+                        <a>dropdown link 1</a>
+                        <a>dropdown link 2</a>
+                    </div>
+                </li>
+                
+                
             </ul>
         </header>
         <article class="top-article">
             <div>
                 Welcome to my website
             </div>
+            <button title="click me test" onclick="test()">click me</button>
+            <div id="test"></div>
         </article>
         <article>
             <div> another article</div>
