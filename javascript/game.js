@@ -11,6 +11,7 @@ let yMax = 10;
 let gameListener;
 
 let gameOn = 0;
+let directionFacing = "down";
 
 function connectedCallback(){
     window.addEventListener('scroll', stickyNavBar);
@@ -85,12 +86,16 @@ function gameControls(event){
     let frameEl = document.getElementById("frameInfo");
     if (event.keyCode === 87){
         playerY -= 1;
+        directionFacing = "up";
     }else if (event.keyCode === 65){
         playerX -= 1;
+        directionFacing = "left";
     }else if (event.keyCode === 83){
         playerY += 1;
+        directionFacing = "down";
     }else if (event.keyCode === 68){
         playerX += 1;
+        directionFacing = "right";
     }
     edgeCheck();
     setCharacter();
@@ -100,9 +105,13 @@ function setCharacter(){
     let characterTiles = document.querySelectorAll(".character");
     for (let characterTile of characterTiles){
         characterTile.classList.remove('character');
+        characterTile.removeChild(characterTile.lastChild);
     }
     let newCharacterTile = document.getElementById("row" + playerY + "col" + playerX);
     newCharacterTile.classList.add('character');
+    let character = document.createElement("img");
+    character.setAttribute('src', "/images/" + directionFacing + "Arrow.png");
+    newCharacterTile.appendChild(character);
 }
 
 function setFrameHeight(){
