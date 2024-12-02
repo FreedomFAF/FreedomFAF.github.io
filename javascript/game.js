@@ -60,7 +60,7 @@ function gameSetup(){
         for (let x = 0; x < 10; x += 1){
             let newTile = addTile(x,y);
             let hasObstical = obsticals.filter(item => item.x === x && item.y === y);
-            if (hasObstical.length >= 0){
+            if (hasObstical.length > 0){
                 let obstical = document.createElement("img");
                 obstical.setAttribute('src', "/images/" + hasObstical[0].image + ".png");
                 newTile.appendChild(obstical);
@@ -120,7 +120,7 @@ function gameControls(event){
         directionFacing = "right";
     }
     let nextToObs = obsticals.filter(item => item.x === playerX && item.y === playerY);
-    if (nextToObs.length >= 0){
+    if (nextToObs.length > 0){
         playerX = initalX;
         playerY = initalY;
     }
