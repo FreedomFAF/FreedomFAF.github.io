@@ -3,6 +3,19 @@ let clickCount = 0;
 let playerX = 0;
 let playerY = 0;
 
+let obsticals = [
+    {
+        "x":1,
+        "y":2,
+        "image" : "rock"
+    }, 
+    {
+        "x":7,
+        "y":6,
+        "image" : "rock"
+    }
+]
+
 let xMin = 0;
 let xMax = 10;
 let yMin = 0;
@@ -45,7 +58,13 @@ function gameSetup(){
     for (let y = 0; y < 10; y += 1){
         addRow(y);
         for (let x = 0; x < 10; x += 1){
-            addTile(x,y);
+            let newTile = addTile(x,y);
+            let hasObstical = obsticals.filter(item => item.x === x && item.y === y);
+            if (hasObstical.length >= 0){
+                let obstical = document.createElement("img");
+                obstical.setAttribute('src', "/images/" + hasObstical[0].image + ".png");
+                newTile.appendChild(obstical);
+            }
         }
     }
     setCharacter();
@@ -70,6 +89,7 @@ function addTile(x, y){
     newDiv.id = "row" + y + "col" + x;
     let rowEl = document.getElementById("row" + y);
     rowEl.appendChild(newDiv);
+    return newDiv;
 }
 
 function gameEnd(){
@@ -84,6 +104,8 @@ function gameEnd(){
 
 function gameControls(event){
     let frameEl = document.getElementById("frameInfo");
+    let initalX = playerX;
+    let initalY = playerY;
     if (event.keyCode === 87){
         playerY -= 1;
         directionFacing = "up";
@@ -96,6 +118,11 @@ function gameControls(event){
     }else if (event.keyCode === 68){
         playerX += 1;
         directionFacing = "right";
+    }
+    let nextToObs = obsticals.filter(item => item.x === playerX && item.y === playerY);
+    if (nextToObs.length >= 0){
+        playerX = initalX;
+        playerY = initalY;
     }
     edgeCheck();
     setCharacter();
